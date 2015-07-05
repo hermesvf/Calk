@@ -2,6 +2,7 @@ package com.example.hermes.calk;
 
 import android.app.ActionBar;
 import android.app.Activity;
+import android.content.Intent;
 import android.os.Bundle;
 import android.support.v7.app.ActionBarActivity;
 import android.util.Log;
@@ -9,15 +10,17 @@ import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
 import android.widget.TextView;
+import android.widget.Toast;
+
+import java.util.ArrayList;
+
+import static java.lang.Integer.parseInt;
 
 
 public class MainActivity extends ActionBarActivity {
 
     TextView T;
-    Integer primerOper;
-    Integer segundoOper;
-    String s = null;
-    char operator;
+    ArrayList<Integer> A;
 
 
 
@@ -43,68 +46,143 @@ public class MainActivity extends ActionBarActivity {
         int id = item.getItemId();
 
         //noinspection SimplifiableIfStatement
-        if (id == R.id.action_settings) {
+        if (id == R.id.about) {
+            gotoAbout();
             return true;
+        }
+
+        if (id == R.id.exit) {
+            finish();
         }
 
         return super.onOptionsItemSelected(item);
     }
 
-    public void operadorMas (View b) {
-            T.setText("");
-            primerOper = Integer.parseInt(s);
-            s = "";
-            operator = '+';
+    public void igual(View b) {
+        char Operador = '*';
+        Integer primerOperando = new Integer(0);
+        Integer segundoOperando = new Integer(0);
+        Integer resultado = new Integer(0);
+        String result = "";
+        int i = 0;
+        while (A.get(i) < 10) {
+            primerOperando = primerOperando*10;
+            primerOperando = primerOperando + A.get(i);
+            ++i;
+        }
+        if (A.get(i) >= 10) {
+            if (A.get(i) == 10) Operador = '+';
+            else if (A.get(i) == 11) Operador = '-';
+            else if (A.get(i) == 12) Operador = 'x';
+            else Operador = '/';
+        }
+        ++i;
+        while (i < A.size()) {
+            segundoOperando = segundoOperando * 10;
+            segundoOperando = segundoOperando + A.get(i);
+            ++i;
         }
 
-    };
+        if (Operador == '+') {
+            resultado = primerOperando + segundoOperando;
+            result = resultado.toString();
+            T.setText(result);
+        }
+        else if (Operador == '-') {
+            resultado = primerOperando - segundoOperando;
+            result = resultado.toString();
+            T.setText(result);
+        }
+        else if (Operador == 'x') {
+            resultado = primerOperando * segundoOperando;
+            result = resultado.toString();
+            T.setText(result);
+        }
+        else if (Operador == '/') {
+            if (segundoOperando == 0) {
+                Toast.makeText(getApplicationContext(),"No puedes dividir por cero", Toast.LENGTH_SHORT).show();
+                T.setText("ERROR");
+            }
+            else {
+                resultado = primerOperando / segundoOperando;
+                result = resultado.toString();
+            }
+        }
+
+        Log.i("HOLA", "PrimerOperando = " + primerOperando.toString());
+        Log.i("HOLA", "SegundoOperando = " + segundoOperando.toString());
+        Log.i("HOLA", "Operador = " + Operador);
+    }
 
 
 
-    public void calcula (View b) {
 
+    public void calcula(View b) {
         if (b.getId() == R.id.uno) {
-            String s = T.getText().toString();
-            T.setText(s + '1');
+            T.setText(T.getText().toString() + '1');
+            A.add(1);
         }
         if (b.getId() == R.id.dos) {
-            String s = T.getText().toString();
-            T.setText(s + '2');
+            T.setText(T.getText().toString() + '2');
+            A.add(2);
         }
         if (b.getId() == R.id.tres) {
-            String s = T.getText().toString();
-            T.setText(s + '3');
+            T.setText(T.getText().toString() + '3');
+            A.add(3);
         }
         if (b.getId() == R.id.cuatro) {
-            String s = T.getText().toString();
-            T.setText(s + '4');
+            T.setText(T.getText().toString() + '4');
+            A.add(4);
         }
         if (b.getId() == R.id.cinco) {
-            String s = T.getText().toString();
-            T.setText(s + '5');
+            T.setText(T.getText().toString() + '5');
+            A.add(5);
         }
         if (b.getId() == R.id.seis) {
-            String s = T.getText().toString();
-            T.setText(s + '6');
+            T.setText(T.getText().toString() + '6');
+            A.add(6);
         }
         if (b.getId() == R.id.siete) {
-            String s = T.getText().toString();
-            T.setText(s + '7');
+            T.setText(T.getText().toString() + '7');
+            A.add(7);
         }
         if (b.getId() == R.id.ocho) {
-            String s = T.getText().toString();
-            T.setText(s + '8');
+            T.setText(T.getText().toString() + '8');
+            A.add(8);
         }
         if (b.getId() == R.id.nueve) {
-            String s = T.getText().toString();
-            T.setText(s + '9');
+            T.setText(T.getText().toString() + '9');
+            A.add(9);
         }
         if (b.getId() == R.id.cero) {
-            String s = T.getText().toString();
-            T.setText(s + '0');
+            T.setText(T.getText().toString() + '0');
+            A.add(0);
+        }
+        if (b.getId() == R.id.mas) {
+            T.setText(T.getText().toString() + '+');
+            A.add(10);
+        }
+        if (b.getId() == R.id.menos) {
+            T.setText(T.getText().toString() + '-');
+            A.add(11);
+        }
+        if (b.getId() == R.id.por) {
+            T.setText(T.getText().toString() + 'x');
+            A.add(12);
+        }
+        if (b.getId() == R.id.entre) {
+            T.setText(T.getText().toString() + '/');
+            A.add(13);
+        }
+
+    }
+
+        public void gotoAbout() {
+            Intent intent = new Intent(this,About.class);
+            startActivity(intent);
         }
 
 
-    }
+
 
 }

@@ -1,7 +1,24 @@
 <menu xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools" tools:context=".MainActivity">
+
+    <item android:id="@+id/about" android:title="About" android:orderInCategory="150"
+        app:showAsAction="ifRoom"  android:icon="@android:drawable/ic_menu_info_details"
+        />
+    <item android:id="@+id/login" android:title="Login" android:orderInCategory="150"
+        app:showAsAction="never"  >
+
+        <menu>
+            <item android:id="@+id/twitter" android:title="Twitter" android:orderInCategory="50"
+                app:showAsAction="never" android:icon="@drawable/twitterlogo" />
+            <item android:id="@+id/bbdd" android:title="BBDD" android:orderInCategory="150"
+                app:showAsAction="never"  />
+        </menu>
+
+    </item>
     <item android:id="@+id/action_settings" android:title="@string/action_settings"
         android:orderInCategory="100" app:showAsAction="never" />
+    <item android:id="@+id/exit" android:title="Exit" android:orderInCategory="180"
+        app:showAsAction="never"/>
 </menu>
 
