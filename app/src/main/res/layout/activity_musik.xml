@@ -1,0 +1,50 @@
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools" android:layout_width="match_parent"
+    android:layout_height="match_parent" android:paddingLeft="@dimen/activity_horizontal_margin"
+    android:paddingRight="@dimen/activity_horizontal_margin"
+    android:paddingTop="@dimen/activity_vertical_margin"
+    android:paddingBottom="@dimen/activity_vertical_margin"
+    tools:context="com.example.hermes.calk.Musik"
+    android:background="@drawable/step2">
+
+    <LinearLayout
+        android:orientation="vertical"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:gravity="center|top"
+        android:weightSum="0"
+        android:layout_alignParentBottom="true"
+        android:layout_alignParentLeft="true"
+        android:layout_alignParentStart="true">
+
+        <ImageView
+            android:layout_width="wrap_content"
+            android:layout_height="300dp"
+            android:id="@+id/imageView2"
+            android:src="@drawable/imgdisk" />
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="Keep your head up - Ben Howard"
+            android:id="@+id/textView9"
+            android:layout_margin="20dp"
+            android:textColor="#ffffffff"
+            android:textSize="18dp"
+            android:textStyle="normal"
+            android:maxLines="1"
+            android:layout_gravity="center"
+            android:gravity="center" />
+
+        <ImageView
+            android:layout_width="100dp"
+            android:layout_height="100dp"
+            android:id="@+id/imgbt"
+            android:src="@drawable/dale"
+            android:visibility="visible"
+            android:layout_gravity="center"
+            android:longClickable="false"
+            android:layout_marginTop="5dp" />
+
+    </LinearLayout>
+</RelativeLayout>
