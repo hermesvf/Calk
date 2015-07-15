@@ -3,6 +3,7 @@ package com.example.hermes.calk;
 import android.content.ContentValues;
 import android.content.Context;
 import android.content.SharedPreferences;
+import android.graphics.Bitmap;
 import android.support.v7.app.ActionBarActivity;
 import android.os.Bundle;
 import android.view.Menu;
@@ -32,19 +33,14 @@ public class Login_Twitter extends ActionBarActivity {
     private TwitterLoginButton loginButton;
 
     public static boolean dentro;
+
     EditText name, password;
 
-    public static String usuari;
+    public static String usuari ="";
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
-
-        SharedPreferences sp = getSharedPreferences("myData", Context.MODE_PRIVATE);
         super.onCreate(savedInstanceState);
-        if (sp.getBoolean("dentro",false)) {
-            Intent intent = new Intent(this, Selecciona.class);
-            startActivity(intent);
-        }
         TwitterAuthConfig authConfig = new TwitterAuthConfig(TWITTER_KEY, TWITTER_SECRET);
         Fabric.with(this, new Twitter(authConfig));
         setContentView(R.layout.activity_login__twitter);
@@ -52,10 +48,12 @@ public class Login_Twitter extends ActionBarActivity {
         loginButton.setCallback(new Callback<TwitterSession>() {
             @Override
             public void success(Result<TwitterSession> result) {
+                usuari = result.data.getUserName();
+
                 dentro = true;
                 SharedPreferences sp = getSharedPreferences("myData", Context.MODE_PRIVATE);
                 SharedPreferences.Editor editor = sp.edit();
-                editor.putBoolean("dentro", dentro);
+                editor.putBoolean("dentro", true);
                 editor.apply();
                 Intent intent = new Intent(getApplicationContext(), Selecciona.class);
                 startActivity(intent);
@@ -84,10 +82,9 @@ public class Login_Twitter extends ActionBarActivity {
             SharedPreferences.Editor editor = sp.edit();
             editor.putString("name", name.getText().toString());
             editor.putString("password", password.getText().toString());
-            editor.putBoolean("dentro", dentro);
+            editor.putBoolean("dentro", true);
             editor.apply();
             usuari = name.getText().toString();
-            Login_Twitter.dentro = true;
             Intent intent = new Intent(getApplicationContext(), Selecciona.class);
             startActivity(intent);
         }
@@ -111,14 +108,6 @@ public class Login_Twitter extends ActionBarActivity {
         int id = item.getItemId();
 
         //noinspection SimplifiableIfStatement
-        if (id == R.id.Comprueba) {
-            if (Login_Twitter.dentro) {
-                Toast.makeText(getApplicationContext(),"Estas dentro", Toast.LENGTH_LONG).show();
-            }
-            else {
-                Toast.makeText(getApplicationContext(),"Estas fuera", Toast.LENGTH_LONG).show();
-            }
-        }
 
         return super.onOptionsItemSelected(item);
     }

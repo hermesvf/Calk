@@ -32,8 +32,7 @@ public class Profile extends ActionBarActivity {
         TextView txtView = (TextView) findViewById(R.id.textviewdeusuario);
 
         if (Login_Twitter.dentro) {
-            SharedPreferences sp = getSharedPreferences("myData", Context.MODE_PRIVATE);
-            txtView.setText(sp.getString("name","unknown"));
+            txtView.setText(Login_Twitter.usuari);
         }
 
         imgView = (ImageView) findViewById(R.id.profileImg);

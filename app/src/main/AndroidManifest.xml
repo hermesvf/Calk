@@ -8,15 +8,16 @@
 
     <application
         android:allowBackup="true"
-        android:icon="@mipmap/ic_launcher"
+        android:icon="@drawable/eee"
         android:label="@string/app_name"
-        android:theme="@style/AppTheme">
-
-        <meta-data android:name="io.fabric.ApiKey" android:value="YOUR_API_KEY"/>
+        android:theme="@style/AppTheme" >
+        <meta-data
+            android:name="io.fabric.ApiKey"
+            android:value="YOUR_API_KEY" />
 
         <activity
-            android:icon="@drawable/calk"
             android:name=".MainActivity"
+            android:icon="@drawable/calk"
             android:label="@string/app_name" >
         </activity>
         <activity
@@ -29,11 +30,15 @@
         </activity>
         <activity
             android:name=".Login_Twitter"
-            android:label="Hermes Project"
-            android:icon="@drawable/calk">
+            android:icon="@drawable/calk"
+            android:label="Hermes Project" >
             <meta-data
                 android:name="io.fabric.ApiKey"
                 android:value="694d70beeaefaf7a721009ca96bd2b8726eb4f59" />
+        </activity>
+        <activity
+            android:name=".Selecciona"
+            android:label="Hermes Project" >
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
@@ -41,8 +46,12 @@
             </intent-filter>
         </activity>
         <activity
-            android:name=".Selecciona"
-            android:label="@string/title_activity_selecciona" >
+            android:name=".Memory"
+            android:label="@string/title_activity_memory" >
+        </activity>
+        <activity
+            android:name=".Ranking"
+            android:label="@string/title_activity_ranking" >
         </activity>
     </application>
 

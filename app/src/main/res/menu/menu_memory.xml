@@ -1,0 +1,11 @@
+<menu xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools" tools:context="com.example.hermes.calk.Memory">
+    <item android:id="@+id/Reiniciar" android:title="Restart"
+        android:orderInCategory="100" app:showAsAction="never" />
+    <item android:id="@+id/logout" android:title="Logout" android:orderInCategory="250"
+        app:showAsAction="never" />
+
+    <item android:id="@+id/Ranking" android:title="Ranking"
+        android:orderInCategory="100" app:showAsAction="ifRoom" />
+</menu>

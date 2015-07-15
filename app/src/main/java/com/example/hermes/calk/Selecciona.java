@@ -17,8 +17,17 @@ public class Selecciona extends ActionBarActivity {
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
-        super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_selecciona);
+
+        SharedPreferences sharedPreferences = getSharedPreferences("myData",Context.MODE_PRIVATE);
+        if(!sharedPreferences.getBoolean("dentro",false)) {
+            Intent i = new Intent(Selecciona.this, Login_Twitter.class);
+            startActivity(i);
+        }
+            super.onCreate(savedInstanceState);
+
+
+            setContentView(R.layout.activity_selecciona);
+
     }
 
     @Override
@@ -46,19 +55,6 @@ public class Selecciona extends ActionBarActivity {
                 startActivity(i);
         }
 
-        if (id == R.id.Comprueba) {
-            if (Login_Twitter.dentro) {
-                Toast.makeText(getApplicationContext(),"Estas dentro", Toast.LENGTH_LONG).show();
-            }
-            else {
-                Toast.makeText(getApplicationContext(),"Estas fuera", Toast.LENGTH_LONG).show();
-            }
-        }
-
-        else if (id == R.id.nom) {
-            Toast.makeText(getApplicationContext(),Login_Twitter.usuari, Toast.LENGTH_SHORT).show();
-        }
-
         return super.onOptionsItemSelected(item);
     }
 
@@ -77,7 +73,8 @@ public class Selecciona extends ActionBarActivity {
             startActivity(i);
         }
         else {
-            Toast.makeText(getApplicationContext(),"GAME NO ESTA AUN IMPLEMENTADO", Toast.LENGTH_SHORT).show();
+            Intent i = new Intent(this,Memory.class);
+            startActivity(i);
         }
 
     }

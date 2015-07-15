@@ -4,8 +4,4 @@
     tools:context="com.example.hermes.calk.Selecciona">
     <item android:id="@+id/logout" android:title="Logout"
     android:orderInCategory="100" app:showAsAction="never" />
-    <item android:id="@+id/Comprueba" android:title="Im in or not"
-        android:orderInCategory="100" app:showAsAction="never" />
-    <item android:id="@+id/nom" android:title="Nombre"
-        android:orderInCategory="110" app:showAsAction="never" />
 </menu>

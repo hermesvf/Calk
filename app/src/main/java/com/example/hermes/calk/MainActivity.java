@@ -48,14 +48,12 @@ public class MainActivity extends ActionBarActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-
         setContentView(R.layout.activity_main);
-
+        T = (TextView) findViewById(R.id.textView2);
         SharedPreferences sharedP = getSharedPreferences("myData",Context.MODE_PRIVATE);
         codeNot = sharedP.getInt("codeNot",1);
         ANS = sharedP.getInt("ANS",0);
 
-        T = (TextView) findViewById(R.id.textView2);
         AlertDialog.Builder builder = new AlertDialog.Builder(this);
         builder.setMessage("Esta calculadora solo acepta operaciones entre dos operandos. Tambien debe saberse" +
                 " que para que funcione bien, despues de cada operacion es preciso presionar la tecla C para asi " +
@@ -100,6 +98,15 @@ public class MainActivity extends ActionBarActivity {
             SharedPreferences.Editor editor = sp.edit();
             editor.putInt("codeNot", codeNot);
             editor.apply();
+        }
+        else if (id == R.id.logout) {
+            Login_Twitter.dentro = false;
+            SharedPreferences sp = getSharedPreferences("myData", Context.MODE_PRIVATE);
+            SharedPreferences.Editor editor = sp.edit();
+            editor.putBoolean("dentro", false);
+            editor.apply();
+            Intent i = new Intent(getApplicationContext(), Login_Twitter.class);
+            startActivity(i);
         }
 
 
@@ -174,6 +181,7 @@ public class MainActivity extends ActionBarActivity {
     }
 
     public void ansjeje(View v) {
+
         T.setText(T.getText().toString() + "ANS");
         A.add(ANS);
         Toast.makeText(getApplicationContext(),"ANS: "+ ANS.toString(),Toast.LENGTH_SHORT).show();
@@ -183,6 +191,7 @@ public class MainActivity extends ActionBarActivity {
 
 
     public void calcula(View b) {
+
         if (b.getId() == R.id.uno) {
             T.setText(T.getText().toString() + '1');
             A.add(1);
@@ -250,7 +259,6 @@ public class MainActivity extends ActionBarActivity {
         }
 
     public void llama(View v) {
-        Log.i("INTENTOS", "ENTRO POR EL LLAMA");
             Intent intent = new Intent(Intent.ACTION_DIAL, Uri.parse("tel:"+T.getText().toString()));
             startActivity(intent);
         }
@@ -301,16 +309,14 @@ public class MainActivity extends ActionBarActivity {
 
     @Override
     public void onSaveInstanceState(Bundle outState, PersistableBundle outPersistentState) {
-        T = (TextView) findViewById(R.id.textView2);
         String J = T.getText().toString();
         outState.putString("pantalla",J);
-        Toast.makeText(getApplicationContext(),"save: " + J + " or " +T.getText().toString(), Toast.LENGTH_SHORT).show();
+        Toast.makeText(getApplicationContext(),"save: " + J + " or " + T.getText().toString(), Toast.LENGTH_SHORT).show();
         super.onSaveInstanceState(outState, outPersistentState);
     }
 
     @Override
     protected void onRestoreInstanceState(Bundle savedInstanceState) {
-        T = (TextView) findViewById(R.id.textView2);
         super.onRestoreInstanceState(savedInstanceState);
         String A = savedInstanceState.getString("pantalla");
         Toast.makeText(getApplicationContext(),"restore: " + A + " or " + savedInstanceState.getString("pantalla"), Toast.LENGTH_SHORT).show();

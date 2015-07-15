@@ -13,5 +13,7 @@
         </menu>
 
     </item>
+    <item android:id="@+id/logout" android:title="Logout" android:orderInCategory="250"
+        app:showAsAction="never" />
 </menu>
 
