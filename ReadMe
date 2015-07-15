@@ -1,0 +1,11 @@
+Aquí está mi aplicación, no está acabada pero he hecho todo lo que me ha dado tiempo. A continuación comentaré los fallos
+que no he conseguido solucionar:
+
+- El Memory no está acabado, no me he sabido defender con Java y los Threads.
+- No hay base de Datos.
+- No he conseguido que me funcionase el onSaveInstanceState y el correspondiente restore en la pantalla de la calculadora.
+- En el reprodictor de música, si le das al play, sales de la Activity y vuelves, el botón vuelve al estado primario (aunque la
+  música sigue sonando).
+- En el perfil, se puede seleccionar una foto de avatar pero no sé cómo hacer que sea persistente.
+
+Por lo demás creo que está bastante bien, lo que más me ha afectado ha sido el uso de Java y que no sé trabajar con BBDD.
